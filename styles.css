@@ -1,0 +1,336 @@
+/* ==========================================================
+   Aly Salem – Personal CV
+   Design idea: a padel court. Court blue, ball-yellow accent,
+   white court lines behind the hero.
+   ========================================================== */
+
+:root {
+  --court: #1f4e79;
+  --court-dark: #163a5b;
+  --ball: #e4e838;
+  --ink: #14202b;
+  --muted: #55636f;
+  --paper: #f3f6f8;
+  --white: #ffffff;
+  --line: #d5dde3;
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+  --font-body: "Public Sans", "Segoe UI", Arial, sans-serif;
+
+  --max: 960px;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+img { max-width: 100%; display: block; }
+ul { margin: 0; padding: 0; }
+p { margin: 0 0 1rem; }
+
+a { color: var(--court); text-underline-offset: 3px; }
+a:hover { color: var(--court-dark); }
+
+:focus-visible {
+  outline: 3px solid var(--ball);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--court-dark);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(243, 246, 248, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover { color: var(--ink); border-bottom-color: var(--ball); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--court);
+  color: var(--white);
+}
+
+/* Court lines: a simplified padel court drawn with borders */
+.court { position: absolute; inset: 0; }
+.court::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.22);
+}
+.court-line { position: absolute; background: rgba(255, 255, 255, 0.22); }
+.court-line--center { top: 1.5rem; bottom: 1.5rem; left: 50%; width: 3px; }
+.court-line--service { left: 1.5rem; right: 1.5rem; top: 50%; height: 3px; display: none; }
+.court-line--service-left,
+.court-line--service-right { top: 1.5rem; bottom: 1.5rem; width: 3px; }
+.court-line--service-left { left: 25%; }
+.court-line--service-right { right: 25%; }
+
+.hero-inner {
+  position: relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-role {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.3rem 0.9rem;
+  background: var(--ball);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 999px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 10vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.25rem;
+}
+
+.hero-title-sub {
+  font-size: 1.2rem;
+  max-width: 34ch;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn--primary { background: var(--ball); color: var(--ink); }
+.btn--primary:hover { background: var(--white); color: var(--ink); }
+.btn--ghost { border-color: rgba(255, 255, 255, 0.6); color: var(--white); }
+.btn--ghost:hover { background: var(--white); color: var(--court-dark); }
+
+.hero-photo { margin: 0; }
+.hero-photo img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 50%;
+  border: 6px solid var(--ball);
+  background: var(--court-dark);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 0.5rem;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 4px solid var(--court);
+  display: inline-block;
+}
+
+.lead { font-size: 1.25rem; line-height: 1.55; max-width: 60ch; }
+.section > p { max-width: 65ch; }
+
+.subheading {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 3rem 0 1rem;
+  color: var(--court);
+}
+
+/* ---------- Timeline entries ---------- */
+.entry {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0.5rem 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+.entry:last-of-type { border-bottom: 1px solid var(--line); }
+
+.entry-meta { display: flex; flex-direction: column; color: var(--muted); font-size: 0.95rem; }
+.entry-meta time { font-weight: 600; color: var(--ink); }
+
+.entry-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin: 0;
+}
+.entry-sub { color: var(--court); font-weight: 600; margin: 0.15rem 0 0.75rem; }
+.entry-body ul { padding-left: 1.2rem; }
+.entry-body li { margin-bottom: 0.35rem; max-width: 65ch; }
+.entry-body li::marker { color: var(--court); }
+.entry-body p:last-child { margin-bottom: 0; }
+
+.facts { list-style: none; display: flex; gap: 0.5rem 1.5rem; flex-wrap: wrap; padding-left: 0 !important; }
+.facts li { font-weight: 500; }
+
+/* ---------- Skills ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.skill-group {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--court);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.skill-group h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 0.9rem; }
+
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chips li {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ---------- Achievements ---------- */
+.achievements { list-style: none; display: grid; gap: 0.75rem; max-width: 65ch; }
+.achievements li {
+  position: relative;
+  padding-left: 2rem;
+}
+.achievements li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--ball);
+  border: 2px solid var(--court);
+}
+
+/* ---------- Contact ---------- */
+.contact { padding-bottom: 4rem; }
+.contact-list { list-style: none; display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+.contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  max-width: 560px;
+}
+.contact-label { width: 90px; font-weight: 600; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+.site-footer p { margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 3.5rem 1.75rem; gap: 2rem; }
+  .hero-photo { order: -1; }
+  .hero-photo img { width: 180px; height: 180px; }
+  .court::before { inset: 0.75rem; }
+  .entry { grid-template-columns: 1fr; gap: 0.25rem; }
+  .entry-meta { flex-direction: row; gap: 0.75rem; flex-wrap: wrap; }
+  .nav { justify-content: center; }
+  .nav-links { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
