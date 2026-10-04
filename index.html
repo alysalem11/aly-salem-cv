@@ -24,8 +24,15 @@
         <li><a href="#achievements">Achievements</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
     </nav>
   </header>
+
+  <!-- Welcome message (shown by script.js on page load) -->
+  <div class="welcome" id="welcome" role="status" hidden>
+    <p id="welcome-text"></p>
+    <button class="welcome-close" id="welcome-close" type="button" aria-label="Dismiss welcome message">&times;</button>
+  </div>
 
   <main id="main">
     <!-- Hero -->
@@ -147,7 +154,11 @@
         </div>
       </article>
 
-      <h3 class="subheading">Extracurricular activities</h3>
+      <div class="section-head section-head--sub">
+        <h3 class="subheading">Extracurricular activities</h3>
+        <button class="toggle-btn" type="button" data-toggle="extra-content" data-label="Extracurricular" aria-expanded="true" aria-controls="extra-content">Hide Extracurricular</button>
+      </div>
+      <div id="extra-content">
 
       <article class="entry">
         <div class="entry-meta">
@@ -193,11 +204,16 @@
           </ul>
         </div>
       </article>
+      </div>
     </section>
 
     <!-- Skills -->
     <section class="section" id="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title">Skills</h2>
+      <div class="section-head">
+        <h2 id="skills-title">Skills</h2>
+        <button class="toggle-btn" type="button" data-toggle="skills-content" data-label="Skills" aria-expanded="true" aria-controls="skills-content">Hide Skills</button>
+      </div>
+      <div id="skills-content">
       <div class="skills-grid">
         <div class="skill-group">
           <h3>Programming and data</h3>
@@ -223,13 +239,31 @@
             <li>English</li>
           </ul>
         </div>
+        <div class="skill-group" id="custom-skills-group" hidden>
+          <h3>Added by you</h3>
+          <ul class="chips" id="custom-skills"></ul>
+        </div>
+      </div>
+
+      <!-- Add a skill dynamically -->
+      <form class="skill-form" id="skill-form" novalidate>
+        <label for="skill-input">Add a skill</label>
+        <div class="skill-form-row">
+          <input type="text" id="skill-input" name="skill" placeholder="e.g. Python" maxlength="30" autocomplete="off">
+          <button class="btn btn--solid" type="submit">Add</button>
+        </div>
+        <p class="form-feedback" id="skill-feedback" role="status" aria-live="polite"></p>
+      </form>
       </div>
     </section>
 
     <!-- Achievements -->
     <section class="section" id="achievements" aria-labelledby="achievements-title">
-      <h2 id="achievements-title">Achievements</h2>
-      <ul class="achievements">
+      <div class="section-head">
+        <h2 id="achievements-title">Achievements</h2>
+        <button class="toggle-btn" type="button" data-toggle="achievements-content" data-label="Achievements" aria-expanded="true" aria-controls="achievements-content">Hide Achievements</button>
+      </div>
+      <ul class="achievements" id="achievements-content">
         <li>Graduated from the American Diploma program with high honors.</li>
         <li>Co-founded The Padel Academy and lead a team of 7 coaches.</li>
         <li>Promoted to Head Coach at Spark Squash Academy.</li>
@@ -250,11 +284,38 @@
           <a href="tel:+201003487025">01003487025</a>
         </li>
       </ul>
+
+      <!-- Contact form (validated by script.js) -->
+      <form class="contact-form" id="contact-form" novalidate>
+        <h3>Send me a message</h3>
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name">
+          <p class="field-error" id="name-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <p class="field-error" id="email-error" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+          <p class="field-error" id="message-error" role="alert"></p>
+        </div>
+
+        <button class="btn btn--solid" type="submit">Send message</button>
+        <p class="form-feedback" id="form-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>© 2026 Aly Salem. Built with HTML and CSS.</p>
   </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
