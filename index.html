@@ -17,11 +17,13 @@
     <nav class="nav" aria-label="Main navigation">
       <a class="nav-brand" href="#top">Aly Salem</a>
       <ul class="nav-links">
+        <li><a href="#top">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#live">Live</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
@@ -50,7 +52,7 @@
           <p class="hero-title-sub">Junior student in Management of Information and Communication Technology at The American University in Cairo</p>
           <div class="hero-actions">
             <a class="btn btn--primary" href="#contact">Get in touch</a>
-            <a class="btn btn--ghost" href="#experience">See experience</a>
+            <a class="btn btn--ghost" href="#projects">View projects</a>
           </div>
         </div>
         <figure class="hero-photo">
@@ -257,6 +259,64 @@
       </div>
     </section>
 
+    <!-- Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>The Padel Academy</h3>
+          <p>A padel academy I co-founded in Cairo. I manage a team of 7 coaches, run daily operations, handle finances, and work with partner companies.</p>
+          <ul class="tags">
+            <li>Management</li>
+            <li>Operations</li>
+            <li>Finance</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>CV and Portfolio Website</h3>
+          <p>This website. Built for the Design of Web-Based Systems course with HTML and CSS, then extended with JavaScript features and live data from public APIs.</p>
+          <ul class="tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>APIs</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3 class="subheading">Live from GitHub</h3>
+      <form class="skill-form" id="github-form" novalidate>
+        <label for="github-user">GitHub username</label>
+        <div class="skill-form-row">
+          <input type="text" id="github-user" name="github-user" placeholder="e.g. octocat" autocomplete="off">
+          <button class="btn btn--solid" type="submit">Load repos</button>
+        </div>
+      </form>
+      <div class="cards repo-list" id="repo-list" aria-live="polite"></div>
+    </section>
+
+    <!-- Live data from public APIs -->
+    <section class="section" id="live" aria-labelledby="live-title">
+      <h2 id="live-title">Live Data</h2>
+      <p class="lead">Real-time data from free public APIs: Open-Meteo for weather and DummyJSON for quotes.</p>
+      <div class="live-grid">
+        <article class="card">
+          <h3>Weather</h3>
+          <div class="weather-controls">
+            <label for="city-select">City</label>
+            <select id="city-select"></select>
+            <button class="toggle-btn" id="weather-refresh" type="button">Refresh</button>
+          </div>
+          <div id="weather-output" aria-live="polite"></div>
+        </article>
+        <article class="card">
+          <h3>Random quote</h3>
+          <div id="quote-output" aria-live="polite"></div>
+          <button class="btn btn--solid" id="quote-new" type="button">New quote</button>
+        </article>
+      </div>
+    </section>
+
     <!-- Achievements -->
     <section class="section" id="achievements" aria-labelledby="achievements-title">
       <div class="section-head">
@@ -316,6 +376,8 @@
   <footer class="site-footer">
     <p>© 2026 Aly Salem. Built with HTML and CSS.</p>
   </footer>
+  <script src="api.js" defer></script>
+  <script src="widgets.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

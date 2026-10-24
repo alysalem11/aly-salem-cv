@@ -1,6 +1,6 @@
 /* ==========================================================
    Aly Salem – Personal CV
-   Assignment 2: JavaScript interactivity
+   Assignments 2 and 3: JavaScript interactivity
 
    Features:
    1. Welcome message on page load
@@ -8,6 +8,7 @@
    3. Show / hide sections
    4. Dynamic skills list
    5. Contact form with validation
+   6. API widgets (started here, written in widgets.js and api.js)
    ========================================================== */
 
 "use strict";
@@ -246,4 +247,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initSectionToggles();
   initSkillForm();
   initContactForm();
+
+  // Assignment 3: API widgets (defined in widgets.js)
+  initWeather();
+  initQuote();
+  initGithubRepos();
 });
